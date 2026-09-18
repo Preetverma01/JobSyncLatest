@@ -24,10 +24,8 @@ services:
       - key: MAX_UPLOAD_SIZE
         value: 5242880
 
-  - type: static
-    name: jobsync-client
-    env: static
-    plan: free
+staticSites:
+  - name: jobsync-client
     rootDir: client
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
