@@ -23,12 +23,3 @@ services:
         value: llama-3.3-70b-versatile
       - key: MAX_UPLOAD_SIZE
         value: 5242880
-
-staticSites:
-  - name: jobsync-client
-    rootDir: client
-    buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
-    envVars:
-      - key: VITE_API_BASE_URL
-        value: https://jobsync-api.onrender.com/api
