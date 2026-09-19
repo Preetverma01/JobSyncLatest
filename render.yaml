@@ -4,7 +4,7 @@ services:
     runtime: node
     plan: free
     rootDir: server
-    buildCommand: npm ci
+    buildCommand: npm install
     startCommand: npm start
     healthCheckPath: /api/health
     autoDeploy: true
@@ -30,12 +30,12 @@ services:
     runtime: static
     plan: free
     rootDir: client
-    buildCommand: npm ci && npm run build
+    buildCommand: npm install && npm run build
     staticPublishPath: dist
     autoDeploy: true
     envVars:
       - key: VITE_API_BASE_URL
-        value: https://jobsync-api.onrender.com/api
+        value: https://jobsynclatest.onrender.com/api
     routes:
       - type: rewrite
         source: /*
