@@ -1,8 +1,9 @@
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
+import { JWT_SECRET } from "../config/env.js";
 
 const generateToken = (userId, role) =>
-  jwt.sign({ id: userId, role }, process.env.JWT_SECRET || "jobsync-secret", {
+  jwt.sign({ id: userId, role }, JWT_SECRET, {
     expiresIn: "7d",
   });
 

@@ -84,7 +84,7 @@ Update the values in `.env`:
 
 ```env
 PORT=5000
-JWT_SECRET=supersecretjobsynckey
+JWT_SECRET=<long random secret>
 MONGODB_URI=mongodb://127.0.0.1:27017/jobsync
 CLIENT_ORIGIN=http://localhost:5173
 OPENROUTER_API_KEY=your_openrouter_api_key_here
