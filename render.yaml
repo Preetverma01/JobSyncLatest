@@ -1,11 +1,13 @@
 services:
   - type: web
     name: jobsync-api
-    env: node
+    runtime: node
     plan: free
     rootDir: server
-    buildCommand: npm install
+    buildCommand: npm ci
     startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
     envVars:
       - key: NODE_ENV
         value: production
@@ -23,3 +25,18 @@ services:
         value: llama-3.3-70b-versatile
       - key: MAX_UPLOAD_SIZE
         value: 5242880
+  - type: web
+    name: jobsync-client
+    runtime: static
+    plan: free
+    rootDir: client
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    autoDeploy: true
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://jobsync-api.onrender.com/api
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
