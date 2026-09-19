@@ -8,21 +8,27 @@ const api = axios.create({
   timeout: 60000,
 });
 
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("jobsync-token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 /**
  * Uploads a resume PDF for analysis.
+ * Posts to the authenticated endpoint POST /api/resume/analyze,
+ * which returns { success, message, resume, analysis }.
  * @param {File} file
- * @returns {Promise<object>} the analysis object from the backend
+ * @returns {Promise<object>} the backend response payload
  */
 export async function analyzeResume(file) {
-  console.log("file", file);
   const formData = new FormData();
-  console.log("formdata line 19", formData);
   formData.append("resume", file);
-  console.log("reaced line 21");
 
   try {
-    console.log("form", formData);
-    const response = await api.post("/analyze", formData, {
+    const response = await api.post("/resume/analyze", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
     return response.data;
