@@ -182,3 +182,22 @@ npm run dev
 ## License
 
 MIT
+
+
+---
+
+## Complete Viva & Oral Exam Preparation Guide
+
+> A full dedicated guide with 40+ in-depth technical questions, architecture diagrams, scoring formulas, and trap question answers is available in **[`VIVA_PREPARATION.md`](./VIVA_PREPARATION.md)**.
+
+### Quick Reference for Viva & Defense:
+- **Candidate-to-Job Matching Formula:**
+  - `MatchScore = 45% Skills + 20% Job Readiness + 15% ATS Score + 10% Projects + 10% Certifications`
+- **Job Readiness Composite:**
+  - 5-factor average: Skills Coverage, Resume Quality, Relevant Projects, Experience, and Certifications.
+- **Role Hierarchy:**
+  - Student, Placement Officer (TPO), Recruiter, and Super Admin.
+- **Security:**
+  - Passwords hashed using `bcryptjs` with salt rounds = 10.
+  - Stateless JSON Web Tokens (JWT) verified on all protected API routes.
+  - File upload restrictions: 5 MB limit, PDF MIME filtering, automatic temporary storage cleanup.
